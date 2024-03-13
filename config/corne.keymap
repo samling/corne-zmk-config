@@ -9,6 +9,76 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        magic_shift_layer: magic_shift_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "MAGIC_SHIFT_LAYER";
+            #binding-cells = <0>;
+            bindings = <&mo 3>, <&none>, <&none>, <&to 4>;
+        };
+
+        layer_mo_sl: layer_mo_sl {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_MO_SL";
+            bindings = <&mo>, <&sl>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
+
+        mo_tog_tapdance_numpad: mo_tog_tapdance_numpad {
+            compatible = "zmk,behavior-tap-dance";
+            label = "MO_TOG_TAPDANCE_NUMPAD";
+            #binding-cells = <0>;
+            bindings = <&mo 1>, <&tog 1>;
+        };
+
+        sk_shift: sk_shift {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SK_SHIFT";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_SHIFT>, <&caps_word>;
+        };
+
+        stickyshift_tap_hold: stickyshift_tap_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "STICKYSHIFT_TAP_HOLD";
+            bindings = <&kp>, <&sk_shift>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+        };
+
+        sl_toggle_symbols: sl_toggle_symbols {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SL_TOGGLE_SYMBOLS";
+            #binding-cells = <0>;
+            bindings = <&sl 2>, <&to 2>;
+        };
+
+        sl_tap_hold_symbols: sl_tap_hold_symbols {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SL_TAP_HOLD_SYMBOLS";
+            bindings = <&mo>, <&sl_toggle_symbols>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+        };
+
+        auto_tab: auto_tab {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTO_TAB";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <350>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -20,10 +90,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB           &kp Q  &kp W  &kp E  &kp R      &kp T             &kp Y          &kp U      &kp I      &kp O    &kp P     &kp MINUS
-&mt LCTRL ESCAPE  &kp A  &kp S  &kp D  &kp F      &kp G             &kp H          &kp J      &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT         &kp Z  &kp X  &kp C  &kp V      &kp B             &kp N          &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
-                                &mo 1  &kp ENTER  &kp LEFT_SHIFT    &kp BACKSPACE  &kp SPACE  &mo 2
+&auto_tab LC(LA(TAB)) TAB  &kp Q  &kp W  &kp E                    &kp R      &kp T                                 &kp Y          &kp U      &kp I                     &kp O    &kp P     &kp MINUS
+&mt LCTRL ESCAPE           &kp A  &kp S  &kp D                    &kp F      &kp G                                 &kp H          &kp J      &kp K                     &kp L    &kp SEMI  &kp SQT
+&kp LSHFT                  &kp Z  &kp X  &kp C                    &kp V      &kp B                                 &kp N          &kp M      &kp COMMA                 &kp DOT  &kp FSLH  &magic_shift_layer
+                                         &mo_tog_tapdance_numpad  &kp ENTER  &stickyshift_tap_hold LEFT_SHIFT 0    &kp BACKSPACE  &kp SPACE  &sl_tap_hold_symbols 2 0
             >;
         };
 
@@ -35,10 +105,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &none          &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_ASTERISK  &kp KP_SUBTRACT
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none          &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none            &kp KP_PLUS
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans         &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none            &kp KP_ENTER
-                                        &to 0         &kp ENTER     &none           &kp BACKSPACE  &kp KP_NUMBER_0  &kp KP_DOT
+&kp TAB  &kp N1  &kp N2  &kp N3  &kp N4     &kp N5    &none          &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_ASTERISK  &kp KP_SUBTRACT
+&trans   &trans  &trans  &trans  &trans     &trans    &none          &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none            &kp KP_PLUS
+&trans   &trans  &trans  &trans  &trans     &trans    &trans         &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none            &kp KP_ENTER
+                         &to 0   &kp ENTER  &none     &kp BACKSPACE  &kp KP_NUMBER_0  &kp KP_DOT
             >;
         };
 
@@ -50,10 +120,28 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp GRAVE  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT         &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC         &kp RBRC  &kp PIPE  &kp TILDE
-                             &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
+&kp EXCL  &kp LEFT_BRACE  &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES  &kp RIGHT_BRACE   &kp QUESTION    &kp COLON       &kp GRAVE       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp COMMA
+&kp HASH  &kp CARET       &kp EQUAL         &kp UNDER          &kp DOLLAR        &kp STAR        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW          &kp RIGHT_ARROW        &kp BSLH       &kp GRAVE
+&kp AT    &kp LESS_THAN   &kp PIPE          &kp MINUS          &kp GREATER_THAN  &kp SLASH       &kp PERCENT     &kp AMPERSAND   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp PLUS       &kp TILDE
+                                            &kp PERCENT        &kp BACKSLASH     &kp PERIOD      &trans          &trans          &to 0
+            >;
+        };
+
+        layer_Shift {
+            bindings = <
+&kp GRAVE  &kp EXCL  &kp AT  &kp HASH  &kp DOLLAR  &kp PERCENT    &kp CARET  &kp AMPERSAND  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp BACKSLASH
+&trans     &trans    &trans  &trans    &trans      &trans         &trans     &trans         &trans    &trans                &trans                 &trans
+&trans     &trans    &trans  &trans    &trans      &trans         &trans     &trans         &trans    &trans                &trans                 &trans
+                             &trans    &trans      &trans         &trans     &trans         &trans
+            >;
+        };
+
+        layer_Magic {
+            bindings = <
+&bt BT_CLR  &none         &none         &none         &none         &none           &none  &none  &none  &none  &none  &none
+&none       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none  &none  &none  &none  &none  &none
+&none       &none         &trans        &none         &none         &none           &none  &none  &none  &none  &none  &to 0
+                                        &none         &none         &none           &none  &none  &none
             >;
         };
     };
