@@ -98,6 +98,56 @@
             bindings = <&kp LEFT_GUI>;
             key-positions = <36 37>;
         };
+
+        combo_parens_pair {
+            bindings = <&parens_pair>;
+            key-positions = <7 10>;
+        };
+
+        combo_brackets_pair {
+            bindings = <&brackets_pair>;
+            key-positions = <31 34>;
+        };
+
+        combo_braces_pair {
+            bindings = <&braces_pair>;
+            key-positions = <1 4>;
+        };
+
+        combo_lt_gt_pair {
+            bindings = <&lt_gt_pair>;
+            key-positions = <25 28>;
+        };
+    };
+
+    macros {
+        parens_pair: parens_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;
+            label = "PARENS_PAIR";
+        };
+
+        brackets_pair: brackets_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_ARROW>;
+            label = "BRACKETS_PAIR";
+        };
+
+        braces_pair: braces_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;
+            label = "BRACES_PAIR";
+        };
+
+        lt_gt_pair: lt_gt_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LESS_THAN &kp GREATER_THAN &kp LEFT_ARROW>;
+            label = "LT_GT_PAIR";
+        };
     };
 
     keymap {
@@ -141,10 +191,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp EXCL  &kp LEFT_BRACE  &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES  &kp RIGHT_BRACE   &kp QUESTION    &kp COLON       &kp GRAVE       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp COMMA
-&kp HASH  &kp CARET       &kp EQUAL         &kp UNDER          &kp DOLLAR        &kp STAR        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW          &kp RIGHT_ARROW        &kp BSLH       &kp GRAVE
-&kp AT    &kp LESS_THAN   &kp PIPE          &kp MINUS          &kp GREATER_THAN  &kp SLASH       &kp PERCENT     &kp AMPERSAND   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp PLUS       &kp TILDE
-                                            &kp PERCENT        &kp BACKSLASH     &kp PERIOD      &trans          &trans          &to 0
+&none  &kp LEFT_BRACE  &kp AT     &kp HASH       &kp RIGHT_BRACE   &kp GRAVE      &kp EXCL        &kp LEFT_PARENTHESIS  &kp COLON     &kp SEMI         &kp RIGHT_PARENTHESIS  &none
+&none  &kp CARET       &kp EQUAL  &kp UNDER      &kp DOLLAR        &kp STAR       &kp LEFT_ARROW  &kp DOWN_ARROW        &kp UP_ARROW  &kp RIGHT_ARROW  &kp TILDE              &none
+&none  &kp LESS_THAN   &kp PIPE   &kp MINUS      &kp GREATER_THAN  &kp SLASH      &kp PERCENT     &kp LEFT_BRACKET      &kp PLUS      &kp AMPS         &kp RIGHT_BRACKET      &none
+                                  &kp BACKSLASH  &kp COLON         &kp PERCENT    &trans          &trans                &to 0
             >;
         };
 
