@@ -101,22 +101,26 @@
 
         combo_parens_pair {
             bindings = <&parens_pair>;
-            key-positions = <7 10>;
+            key-positions = <8 9>;
+            layers = <2>;
         };
 
         combo_brackets_pair {
             bindings = <&brackets_pair>;
-            key-positions = <31 34>;
+            key-positions = <32 33>;
+            layers = <2>;
         };
 
         combo_braces_pair {
             bindings = <&braces_pair>;
             key-positions = <1 4>;
+            layers = <2>;
         };
 
         combo_lt_gt_pair {
             bindings = <&lt_gt_pair>;
             key-positions = <25 28>;
+            layers = <2>;
         };
     };
 
@@ -191,10 +195,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp LEFT_BRACE  &kp AT     &kp HASH       &kp RIGHT_BRACE   &kp GRAVE      &kp EXCL        &kp LEFT_PARENTHESIS  &kp COLON     &kp SEMI         &kp RIGHT_PARENTHESIS  &none
-&trans  &kp CARET       &kp EQUAL  &kp UNDER      &kp DOLLAR        &kp STAR       &kp LEFT_ARROW  &kp DOWN_ARROW        &kp UP_ARROW  &kp RIGHT_ARROW  &kp TILDE              &none
-&trans  &kp LESS_THAN   &kp PIPE   &kp MINUS      &kp GREATER_THAN  &kp SLASH      &kp PERCENT     &kp LEFT_BRACKET      &kp PLUS      &kp AMPS         &kp RIGHT_BRACKET      &none
-                                   &kp BACKSLASH  &kp COLON         &kp PERCENT    &trans          &trans                &to 0
+&trans  &kp LEFT_BRACE  &kp AT     &kp HASH       &kp RIGHT_BRACE   &kp GRAVE      &kp EXCL        &kp COLON       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMI   &none
+&trans  &kp CARET       &kp EQUAL  &kp UNDER      &kp DOLLAR        &kp STAR       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW          &kp RIGHT_ARROW        &kp TILDE  &none
+&trans  &kp LESS_THAN   &kp PIPE   &kp MINUS      &kp GREATER_THAN  &kp SLASH      &kp PERCENT     &kp PLUS        &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AMPS   &none
+                                   &kp BACKSLASH  &kp COLON         &kp PERCENT    &trans          &trans          &to 0
             >;
         };
 
