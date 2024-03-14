@@ -191,10 +191,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none  &kp LEFT_BRACE  &kp AT     &kp HASH       &kp RIGHT_BRACE   &kp GRAVE      &kp EXCL        &kp LEFT_PARENTHESIS  &kp COLON     &kp SEMI         &kp RIGHT_PARENTHESIS  &none
-&none  &kp CARET       &kp EQUAL  &kp UNDER      &kp DOLLAR        &kp STAR       &kp LEFT_ARROW  &kp DOWN_ARROW        &kp UP_ARROW  &kp RIGHT_ARROW  &kp TILDE              &none
-&none  &kp LESS_THAN   &kp PIPE   &kp MINUS      &kp GREATER_THAN  &kp SLASH      &kp PERCENT     &kp LEFT_BRACKET      &kp PLUS      &kp AMPS         &kp RIGHT_BRACKET      &none
-                                  &kp BACKSLASH  &kp COLON         &kp PERCENT    &trans          &trans                &to 0
+&trans  &kp LEFT_BRACE  &kp AT     &kp HASH       &kp RIGHT_BRACE   &kp GRAVE      &kp EXCL        &kp LEFT_PARENTHESIS  &kp COLON     &kp SEMI         &kp RIGHT_PARENTHESIS  &none
+&trans  &kp CARET       &kp EQUAL  &kp UNDER      &kp DOLLAR        &kp STAR       &kp LEFT_ARROW  &kp DOWN_ARROW        &kp UP_ARROW  &kp RIGHT_ARROW  &kp TILDE              &none
+&trans  &kp LESS_THAN   &kp PIPE   &kp MINUS      &kp GREATER_THAN  &kp SLASH      &kp PERCENT     &kp LEFT_BRACKET      &kp PLUS      &kp AMPS         &kp RIGHT_BRACKET      &none
+                                   &kp BACKSLASH  &kp COLON         &kp PERCENT    &trans          &trans                &to 0
             >;
         };
 
